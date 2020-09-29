@@ -1,4 +1,4 @@
-package com.kure.test.singleton;
+package com.kure.test.design;
 
 import java.lang.reflect.Constructor;
 
