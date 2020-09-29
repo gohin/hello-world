@@ -100,7 +100,7 @@
 
         <resources>
             <resource>
-                <directory>src/main/java/com/kure/service/cicc</directory>
+                <directory>src/main/java/com/kure/test</directory>
                 <excludes>
                     <exclude>**/*</exclude>
                 </excludes>
