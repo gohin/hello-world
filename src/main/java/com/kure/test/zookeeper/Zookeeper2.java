@@ -1,4 +1,4 @@
-package com.kure.test;
+package com.kure.test.zookeeper;
 
 
 import org.apache.curator.framework.CuratorFramework;
@@ -8,7 +8,10 @@ import org.apache.curator.framework.recipes.leader.LeaderLatchListener;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 
-public class App2 {
+/**
+ * 分布式锁
+ */
+public class Zookeeper2 {
 
     public static void main(String[] args) throws Exception{
 
