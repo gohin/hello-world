@@ -5,12 +5,15 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 通过反射获取threadlocalmap
+ */
 public class ThreadLocalTest {
 
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
         Thread t1  = Thread.currentThread();
         ThreadLocal<Map<String, String>> threadLocalMap = new ThreadLocal();
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>(8);
         map.put("name","kure");
         threadLocalMap.set(map);
         Field field1 =  t1.getClass().getDeclaredField("threadLocals");
