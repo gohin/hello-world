@@ -9,9 +9,8 @@ public class HelloImpl implements Hello {
         System.out.println("hi");
     }
 
-    public static void main(String[] args) {
-        Hello hello = new HelloImpl();
-        Hello helloProxy = (Hello) new JdkProxy(hello).getJdkProxy();
-        helloProxy.sayHi();
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException {
+        Hello hello = (Hello) new JdkProxy(HelloImpl.class.newInstance()).createJdkProxy();
+        hello.sayHi();
     }
 }

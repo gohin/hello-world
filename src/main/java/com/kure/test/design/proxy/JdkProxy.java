@@ -24,7 +24,7 @@ public class JdkProxy implements InvocationHandler {
         return null;
     }
 
-    public Object getJdkProxy() {
+    public Object createJdkProxy() {
         return Proxy.newProxyInstance(target.getClass().getClassLoader(),target.getClass().getInterfaces(), this);
     }
 }
