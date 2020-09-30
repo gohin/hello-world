@@ -11,72 +11,73 @@ public class ProductFactory {
 
     List<Product> products  = null;
 
+    private Object object = new Object();
+
     BlockingQueue blockingQueue = new ArrayBlockingQueue(10);
 
     public ProductFactory(List<Product> products) {
         this.products = products;
     }
 
-//    public void produce() {
-//        while(true) {
-//            try {
-//                synchronized (ProductFactory.class) {
-//                    while (products.size() == 10) {
-//                        System.out.println("products.wait=" + products.size());
-//                        ProductFactory.class.wait();
-//                    }
-//                    products.add(new Product());
-//                    System.out.println("products.size=" + products.size());
-//                    ProductFactory.class.notify();
-//                }
-//            } catch (Exception e) {
-//
-//            }
-//        }
-//    }
-
     public void produce() {
-        while (true) {
+        while(true) {
             try {
-                blockingQueue.put(new Product());
-                System.out.println("produce Product=" + blockingQueue.size());
+                synchronized (object) {
+                    while (products.size() == 10) {
+                        System.out.println("products.wait=" + products.size());
+                        object.wait();
+                    }
+                    products.add(new Product());
+                    System.out.println("products.size=" + products.size());
+                    object.notify();
+                }
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+        public void consume()  {
+        while(true) {
+            try {
+                synchronized (object) {
+                    while (products.size() <= 0) {
+                        System.out.println("consume.wait=" + products.size());
+                        object.wait();
+                    }
+                    products.remove(products.size()-1);
+                    System.out.println("consume.size=" + products.size());
+                    object.notify();
+                }
             } catch (InterruptedException e) {
 
             }
 
         }
-
     }
 
-    public void consume() {
-        while (true) {
-            try {
-                blockingQueue.take();
-                System.out.println("consume take=" + blockingQueue.size());
-            }catch (InterruptedException e) {
-
-            }
-
-        }
-    }
-
-//    public void consume()  {
-//        while(true) {
+//    public void produce() {
+//        while (true) {
 //            try {
-//                synchronized (ProductFactory.class) {
-//                    while (products.size() <= 0) {
-//                        System.out.println("consume.wait=" + products.size());
-//                        ProductFactory.class.wait();
-//                    }
-//                    products.remove(products.size()-1);
-//                    System.out.println("consume.size=" + products.size());
-//                    ProductFactory.class.notify();
-//                }
+//                blockingQueue.put(new Product());
+//                System.out.println("produce Product=" + blockingQueue.size());
 //            } catch (InterruptedException e) {
+//
+//            }
+//        }
+//    }
+//
+//    public void consume() {
+//        while (true) {
+//            try {
+//                blockingQueue.take();
+//                System.out.println("consume take=" + blockingQueue.size());
+//            }catch (InterruptedException e) {
 //
 //            }
 //
 //        }
 //    }
+
 
 }
