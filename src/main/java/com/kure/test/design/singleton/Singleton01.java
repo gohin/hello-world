@@ -1,4 +1,4 @@
-package com.kure.test.design;
+package com.kure.test.design.singleton;
 
 /**
  * 饿汉模式

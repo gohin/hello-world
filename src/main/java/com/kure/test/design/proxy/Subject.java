@@ -1,5 +1,5 @@
 package com.kure.test.design.proxy;
 
-public interface Hello {
+public interface Subject {
     void sayHi();
 }

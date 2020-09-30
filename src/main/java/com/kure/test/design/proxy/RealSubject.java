@@ -1,8 +1,6 @@
 package com.kure.test.design.proxy;
 
-import java.lang.reflect.Proxy;
-
-public class HelloImpl implements Hello {
+public class RealSubject implements Subject {
 
     @Override
     public void sayHi() {
@@ -10,7 +8,7 @@ public class HelloImpl implements Hello {
     }
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
-        Hello hello = (Hello) new JdkProxy(HelloImpl.class.newInstance()).createJdkProxy();
+        Subject hello = (Subject) new JdkProxy(RealSubject.class.newInstance()).createJdkProxy();
         hello.sayHi();
     }
 }
