@@ -7,27 +7,24 @@ import org.springframework.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
 public class CglibProxy {
-    public static void main(String[] args) {
-        Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(Car.class);
-        enhancer.setCallback(new MethodInterceptor() {
-            @Override
-            public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy)
-                    throws Throwable {
-                System.out.println("before");
-                Object res = methodProxy.invokeSuper(obj, args);
-                System.out.println("after");
-                return res;
-            }
-        });
-        Car car = (Car) enhancer.create();
+    private Object target;
 
-        car.print();
+    public CglibProxy(Object target) {
+        this.target = target;
     }
 
-    static class Car {
-        void print() {
-            System.out.println("I am a car");
+    public Object createCglibProxy(){
+        Enhancer enhancer = new Enhancer();
+        enhancer.setSuperclass(target.getClass());
+        enhancer.setCallback(new MyMethodInterceptor());
+        return enhancer.create();
+    }
+
+    private class MyMethodInterceptor implements MethodInterceptor{
+        @Override
+        public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+            System.out.println("before");
+            return methodProxy.invokeSuper(o, objects);
         }
     }
 }
