@@ -1,8 +1,5 @@
 package com.kure.test.util;
 
-import com.erayt.solar2.engine.SuppressFBWarnings;
-import com.erayt.xfunds.sdp.base.father.constants.ConstantsBaseFather;
-import com.erayt.xfunds.sdp.base.father.exception.SdpBaseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +22,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Date 2018/6/11 15:56
  * @Version 1.0
  **/
-@SuppressFBWarnings(value = {"LO_STUTTERED_MESSAGE","PMB_POSSIBLE_MEMORY_BLOAT","RFI_SET_ACCESSIBLE"})
 public final class InvokeUtils {
     private static final Logger logger = LoggerFactory.getLogger(InvokeUtils.class);
 
@@ -97,12 +93,11 @@ public final class InvokeUtils {
      * @param args 方法参数
      * @return T
      */
-    public static <T> T invokeMethod(Object obj, String methodName, Object[] args) throws SdpBaseException {
+    public static <T> T invokeMethod(Object obj, String methodName, Object[] args) {
 
         Method method = getMethod(obj.getClass(),methodName);
         if (null == method){
             logger.error("Method：{} not found in {}" ,methodName, obj.getClass().getSimpleName());
-            throw new SdpBaseException("Method："+methodName+"not found in " + obj.getClass().getSimpleName());
         }
         Object a = null;
         try {
@@ -112,7 +107,6 @@ public final class InvokeUtils {
         } catch (InvocationTargetException e) {
             Throwable throwable = e.getTargetException();
             logger.error(throwable.getMessage(),throwable);
-            throw new SdpBaseException(throwable.getMessage());
         }
         return (T) a;
     }
@@ -141,7 +135,7 @@ public final class InvokeUtils {
          * @return T
          */
         public static <T> T invokeMethod(String className , String methodName, Object[] args)
-            throws ClassNotFoundException,SdpBaseException {
+            throws ClassNotFoundException {
             return invokeMethod(getClassByName(className), methodName, args);
         }
 
@@ -166,8 +160,8 @@ public final class InvokeUtils {
             return c.newInstance(args);
         } catch (Exception e) {
             logger.error(e.getMessage(),e);
-            throw new SdpBaseException(e.getMessage());
         }
+        return null;
     }
 
     /**
@@ -180,7 +174,7 @@ public final class InvokeUtils {
      **/
     public Field getField(Class<?> clazz, String fieldName) {
         initClassInfo(clazz);
-        HashMap<String, Field> map = field.get(ConstantsBaseFather.MODULE_INVOKE_FIELD + "_" + clazz.getName());
+        HashMap<String, Field> map = field.get("_" + clazz.getName());
         return map.get(fieldName);
     }
 
@@ -195,7 +189,7 @@ public final class InvokeUtils {
      **/
     public Annotation getAnnotation(Class<?> clazz, String fieldName, String annotationClassName) {
         initClassInfo(clazz);
-        HashMap<String, Annotation> map = annotation.get(ConstantsBaseFather.MODULE_INVOKE_ANNOTATION + "_" + clazz.getName());
+        HashMap<String, Annotation> map = annotation.get("_" + clazz.getName());
         return map.get(fieldName + annotationClassName);
     }
 
@@ -209,7 +203,7 @@ public final class InvokeUtils {
      **/
     public static Method getMethod(Class<?> clazz, String methodName) {
         initClassInfo(clazz);
-        HashMap<String, Method> map = method.get(ConstantsBaseFather.MODULE_INVOKE_METHOD + "_" + clazz.getName());
+        HashMap<String, Method> map = method.get("_" + clazz.getName());
         return map.get(methodName);
     }
 
@@ -221,7 +215,7 @@ public final class InvokeUtils {
      * @date 2018/10/25 8:58
      **/
     public static Class<?> getClass(String classFullName) throws ClassNotFoundException {
-        Class<?> value = objectMap.get(ConstantsBaseFather.MODULE_CLASS_INFO + "_" + classFullName);
+        Class<?> value = objectMap.get("_" + classFullName);
         if (null == value) {
             addClassInfoToCache(value = InvokeUtils.getClassByName(classFullName));
         }
@@ -290,10 +284,10 @@ public final class InvokeUtils {
             method.setAccessible(true);
             methodMap.put(method.getName(), method);
         }
-        field.put(ConstantsBaseFather.MODULE_INVOKE_FIELD + "_" + object.getClass().getName(), fieldMap);
-        method.put(ConstantsBaseFather.MODULE_INVOKE_METHOD + "_" + object.getClass().getName(), methodMap);
-        annotation.put(ConstantsBaseFather.MODULE_INVOKE_ANNOTATION + "_" + object.getClass().getName(), annotationMap);
-        objectMap.put(ConstantsBaseFather.MODULE_CLASS_INFO + "_" + object.getClass().getName(), object.getClass());
+//        field.put(ConstantsBaseFather.MODULE_INVOKE_FIELD + "_" + object.getClass().getName(), fieldMap);
+//        method.put(ConstantsBaseFather.MODULE_INVOKE_METHOD + "_" + object.getClass().getName(), methodMap);
+//        annotation.put(ConstantsBaseFather.MODULE_INVOKE_ANNOTATION + "_" + object.getClass().getName(), annotationMap);
+//        objectMap.put(ConstantsBaseFather.MODULE_CLASS_INFO + "_" + object.getClass().getName(), object.getClass());
     }
 
     /**
@@ -304,7 +298,7 @@ public final class InvokeUtils {
      * @since 2018/9/4 16:27
      **/
     private static void initClassInfo(Class<?> clazz) {
-        Class<?> value = objectMap.get(ConstantsBaseFather.MODULE_CLASS_INFO + "_" + clazz.getName());
+        Class<?> value = objectMap.get("_" + clazz.getName());
         if (null == value) {
             addClassInfoToCache(clazz);
         }
