@@ -12,7 +12,7 @@ public class ThreadLocalTest {
 
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
         Thread t1  = Thread.currentThread();
-        ThreadLocal<Map<String, String>> threadLocalMap = new ThreadLocal();
+        ThreadLocal<Map<String, String>> threadLocalMap = ThreadLocal.withInitial(()-> new HashMap<>());
         Map<String, String> map = new HashMap<>(8);
         map.put("name","kure");
         threadLocalMap.set(map);

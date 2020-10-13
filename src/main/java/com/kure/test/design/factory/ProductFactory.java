@@ -22,14 +22,14 @@ public class ProductFactory {
     public void produce() {
         while(true) {
             try {
-                synchronized (object) {
+                synchronized (ProductFactory.class) {
                     while (products.size() == 10) {
                         System.out.println("products.wait=" + products.size());
-                        object.wait();
+                        ProductFactory.class.wait();
                     }
                     products.add(new Product());
                     System.out.println("products.size=" + products.size());
-                    object.notify();
+                    ProductFactory.class.notify();
                 }
             } catch (Exception e) {
 
@@ -37,17 +37,17 @@ public class ProductFactory {
         }
     }
 
-        public void consume()  {
+    public void consume()  {
         while(true) {
             try {
-                synchronized (object) {
+                synchronized (ProductFactory.class) {
                     while (products.size() <= 0) {
                         System.out.println("consume.wait=" + products.size());
-                        object.wait();
+                        ProductFactory.class.wait();
                     }
                     products.remove(products.size()-1);
                     System.out.println("consume.size=" + products.size());
-                    object.notify();
+                    ProductFactory.class.notify();
                 }
             } catch (InterruptedException e) {
 
