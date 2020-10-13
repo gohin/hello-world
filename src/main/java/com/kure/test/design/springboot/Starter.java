@@ -13,7 +13,7 @@ public class Starter {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Starter.class, args);
-        Order order = new Order();order.setType("normal");
+        Order order = new Order();order.setType("special");
         OrderService orderService = context.getBean(OrderService.class);
         System.out.println(orderService.handler(order));
         context.close();

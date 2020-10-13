@@ -6,11 +6,11 @@ import com.kure.test.design.springboot.service.AbstractHandler;
 import org.springframework.stereotype.Component;
 
 @Component
-@HandlerType("normal")
+@HandlerType("special")
 public class SpecialHandler extends AbstractHandler {
 
     @Override
-    protected String handler(Order order) {
+    public String handler(Order order) {
         return "处理特殊订单";
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class NormalHandler extends AbstractHandler {
 
     @Override
-    protected String handler(Order order) {
+    public String handler(Order order) {
         return "处理普通订单";
     }
 }

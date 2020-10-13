@@ -4,5 +4,5 @@ import com.kure.test.design.springboot.domain.Order;
 
 public abstract class AbstractHandler {
 
-    protected abstract String handler(Order order);
+    public abstract String handler(Order order);
 }
