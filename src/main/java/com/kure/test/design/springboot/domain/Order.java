@@ -8,6 +8,13 @@ public class Order {
     private BigDecimal price;
     private String type;
 
+
+    public Order(){}
+
+    public Order(String code){
+        this.code = code;
+    }
+
     public String getCode() {
         return code;
     }
@@ -31,4 +38,5 @@ public class Order {
     public void setType(String type) {
         this.type = type;
     }
+
 }
