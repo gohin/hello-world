@@ -12,7 +12,7 @@ public class SimpleDateFormatTest {
     public static void main(String[] args) throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+        // week year
         SimpleDateFormat sdf1 = new SimpleDateFormat("YYYY");
 
         System.out.println(sdf1.format(sdf.parse("2019-12-01")));
