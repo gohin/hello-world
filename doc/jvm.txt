@@ -50,7 +50,7 @@ jstat -gcutil [vmid] 5000
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:HeapDumpPath=c:/logs/my-heap-dump.hprof
 
-14.-XX:+HeapDumpPath
+14.-XX:HeapDumpPath
 表示，导出堆信息的文件路径。
 
 15.-XX:OnOutOfMemoryError
