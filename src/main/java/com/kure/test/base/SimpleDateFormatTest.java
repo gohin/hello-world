@@ -4,8 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
- * yyyy -- 小写表示year
- * YYYY -- 大写表示week year
+ * yyyy -- 小写表示year 不跨年
+ * YYYY -- 大写表示week year 跨年
  */
 public class SimpleDateFormatTest {
 

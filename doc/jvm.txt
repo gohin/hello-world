@@ -1,0 +1,84 @@
+jvm
+https://docs.oracle.com/javase/8/docs/technotes/tools/index.html#jconsole
+-- 查看虚拟机参数
+jinfo -flags 【PID5860】
+
+--jps -v 查看进程
+
+jstat -gcutil [vmid] 5000
+
+-Xms -Xmx
+各个参数介绍
+1.-verbose:gc
+表示，启动jvm的时候，输出jvm里面的gc信息。格式如下：
+[Full GC 178K->99K(1984K)， 0.0253877 secs]
+
+解读 ：Full GC 就表示执行了一次Full GC的操作，178K 和99K 就表示执行GC前内存容量和执行GC后的内存容量。1984K就表示内存总容量。后面那个是执行本次GC所消耗的时间，单位是秒。
+
+2.-XX:+printGC
+这个打印的GC信息跟上个一样，就不做介绍了。
+
+3.-XX:+PrintGCDetails
+打印GC的详细信息。格式如下：
+
+4.-XX:+PrintGCTimeStamps
+打印GC发生的时间戳。格式如下：
+
+5.-X:loggc:log/gc.log
+这个就表示，指定输出gc.log的文件位置。（我这里写的log/gc.log就表示在当前log的目录里，把GC日志写到叫gc.log的文件里。）
+
+6.-XX:+PrintHeapAtGC
+表示每次GC后，都打印堆的信息。（这个打印的基本格式跟上面第二条的基本类似，我也就不比多说了。）
+
+7.-XX:+TraceClassLoading
+监控类的加载。格式如下：
+
+8.-XX:+PrintClassHistogram
+跟踪参数。这个按下Ctrl+Break后，就会打印一下信息：
+
+10.-Xmn
+设置新生代的内存大小。
+
+11.-XX:NewRatio
+新生代和老年代的比例。比如：1：4，就是新生代占五分之一。
+
+12.-XX:SurvivorRatio
+设置两个Survivor区和eden区的比例。比如：2：8 ，就是一个Survivor区占十分之一。
+
+13.-XX:+HeapDumpOnOutMemoryError
+发生OOM时，导出堆的信息到文件。
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=c:/logs/my-heap-dump.hprof
+
+14.-XX:+HeapDumpPath
+表示，导出堆信息的文件路径。
+
+15.-XX:OnOutOfMemoryError
+当系统产生OOM时，执行一个指定的脚本，这个脚本可以是任意功能的。比如生成当前线程的dump文件，或者是发送邮件和重启系统。
+
+
+16.-XX:PermSize -XX:MaxPermSize
+设置永久区的内存大小和最大值。永久区内存用光也会导致OOM的发生。
+
+17.-Xss
+设置栈的大小。栈都是每个线程独有一个，所有一般都是几百k的大小。
+
+
+
+0: iconst_0 //常量0压入操作数栈
+1: istore_2 //弹出操作数栈栈顶元素，保存到局部变量表第2个位置
+2: iload_0 //第0个变量压入操作数栈
+3: iload_1 //第1个变量压入操作数栈
+4: iadd //操作数栈中的前两个int相加，并将结果压入操作数栈顶
+5: istore_2 //弹出操作数栈栈顶元素，保存到局部变量表第2个位置
+6: iload_2 //加载局部变量表的第2个变量到操作数栈顶
+7: ireturn //返回
+
+
+
+
+
+
+
+
+

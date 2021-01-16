@@ -9,21 +9,27 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class Builder<T> {
+    // 生产者
     private final Supplier<T> supplier;
+    // 消费者
     private List<Consumer<T>> consumers = new ArrayList<>();
+    // 构建者
     public Builder(Supplier<T> supplier) {
         this.supplier = supplier;
     }
+    // 构架方法
     public static <T> Builder<T> of(Supplier<T> supplier){
         return new Builder<>(supplier);
     }
 
+    // 赋值
     public <P> Builder<T> with(BiConsumer<T, P> consumer1, P p){
         Consumer<T> c = (instance -> consumer1.accept(instance, p));
         consumers.add(c);
         return this;
     }
 
+    // 构建
     public T builder(){
         T value = supplier.get();
         consumers.forEach(consumer -> {

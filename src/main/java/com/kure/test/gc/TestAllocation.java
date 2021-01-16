@@ -1,7 +1,7 @@
 package com.kure.test.gc;
 
 /**
- * VM参数： -verbose:gc -Xms20M -Xmx20M -Xmn10M(yong) -XX:PrintGCDetials -XX:SurvivorRatio=8
+ * VM参数： -verbose:gc -Xms20M -Xmx20M -Xmn10M(yong) -XX:+PrintGCDetails -XX:SurvivorRatio=8
  * 新生代 老年代比例 –XX:NewRatio    默认1：2
  */
 public class TestAllocation {

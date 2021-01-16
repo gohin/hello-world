@@ -6,7 +6,7 @@ package com.kure.test.gc;
  *
  * 新生代包括 eden survivor0 survivor1 标记-复制法 将 eden区回收放入 survivor0
  * eden区满，执行yong gc
- * old区满，执行full gc 标志整理法
+ * old区满，执行full gc 标记整理法
  *
  * 强引用 strongly reference 只要引用存在 就不会被回收
  * 软引用 soft reference 内存溢出前 回收

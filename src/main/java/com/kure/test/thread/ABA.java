@@ -11,12 +11,9 @@ public class ABA {
             new AtomicStampedReference<Integer>(100, 0);
 
     public static void main(String[] args) throws InterruptedException {
-        Thread intT1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                atomicInt.compareAndSet(100, 101);
-                atomicInt.compareAndSet(101, 100);
-            }
+        Thread intT1 = new Thread(() -> {
+            atomicInt.compareAndSet(100, 101);
+            atomicInt.compareAndSet(101, 100);
         });
 
         Thread intT2 = new Thread(() -> {
