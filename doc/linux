@@ -1,0 +1,65 @@
+LINUX maven
+
+mvn install:install-file -DgroupId= -DartifactId= -Dversion=0.0.1 -Dpackaging=jar -Dfile=local.jar
+
+LINUX
+环境变量加载顺序
+etc/profile → /etc/profile.d/*.sh → ~/.bash_profile → ~/.bashrc → [/etc/bashrc]
+
+jar -cvfM0 ecas4.3.war ./ --打war包
+ls -a --显示隐藏文件
+. --当前目录
+ps -ef | grep java -- 查找进程
+kill -9 (PID) --杀进程
+vim -- /查找 :q退出 :wq保存退出 :set number nonumber 行号
+按键 n 下一个 shift+n 上一个
+rm -r 递归 -i 确认 -f强制
+pwd --显示当前路径
+rmdir --删除目录 mkdir --新建目录
+whereis 查找二进制程序代码等路径
+mv a.txt b.txt --将 a.txt 改成 b.txt
+mv /usr/men/* . --将目录/usr/men中的所有文件移到当前目录（用.表示）中
+locate
+ctrl+c 退出
+cd 切换目录
+tail -f 文件
+date --查看是按
+cal -- 日历
+vmstat --虚拟内存 状态
+top -- top命令可以实时动态地查看系统的整体运行情况
+find . -name "filename" --查找当前目录下 filename
+free --系统空闲情况
+rename 修改前名称 修改后名称 文件
+unalias 别名
+cat>>文件名 --创建文件
+touch 文件 --创建文件
+alias -p --查看已有别名
+alias stopManager='sh /opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/stopManager.sh'
+
+stopNode='sh /opt/IBM/WebSphere/AppServer/profiles/AppSvr01/bin/stopNode.sh'
+
+tar -cvf log.tar log2012.log 仅打包，不压缩！
+tar -zcvf log.tar.gz log2012.log 打包后，以 gzip 压缩
+tar -jcvf log.tar.bz2 log2012.log 打包后，以 bzip2 压缩
+-c或--create 建立新的备份文件。
+-f<备份文件>或--file=<备份文件> 指定备份文件。
+-v或--verbose 显示指令执行过程。
+-z或--gzip或--ungzip 通过gzip指令处理备份文件。
+-x或--extract或--get 从备份文件中还原文件。
+
+tar -zxvf /opt/soft/test/log.tar.gz
+tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录
+
+chmod [ugoa...][[+-=][rwxX]...][,...]
+u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。
++ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。
+r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。
+
+
+zookeeper相关
+./zkCli.sh -server ip:port
+./zkServer.sh start stop status
+
+export -p ---查看系统变量
+export name=value --设置系统变量
+unset name --取消设置环境变量
