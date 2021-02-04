@@ -24,12 +24,12 @@ public class ThreadPools implements Runnable{
              * ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
              * ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
              */
-            threadPoolExecutor = new ThreadPoolExecutor(5, 10, 30L, TimeUnit.SECONDS, new ArrayBlockingQueue<>(500), new ThreadPoolExecutor.AbortPolicy());
+            threadPoolExecutor = new ThreadPoolExecutor(5, 10, 30L, TimeUnit.SECONDS, new ArrayBlockingQueue<>(5), new ThreadPoolExecutor.AbortPolicy());
 //            threadPoolExecutor.allowCoreThreadTimeOut(true); // 核心线程超时时间
 //            threadPoolExecutor.submit(new ThreadPools()); // 有返回值
 
             for(int i = 0; i < 10000; i++) {
-                threadPoolExecutor.execute(new ThreadPools()); // 无返回值
+                threadPoolExecutor.submit(new ThreadPools()); // 无返回值
                 System.out.println(i);
             }
 

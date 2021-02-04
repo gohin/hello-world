@@ -30,8 +30,6 @@ import java.util.stream.Collectors;
 
 /**
  * SDP下的工具类
- *
- * @author txh
  * @version 1.0.0
  * @ClassName com.erayt.xfunds.sdp.common/SdpUtils.java
  * @createTime 2019年10月10日 上午11:37:53
@@ -42,7 +40,6 @@ public final class SdpUtils {
 
     /**
      * List中String数据转换成String字符数据
-     *
      * @param strList
      * @param seqStr
      * @return
@@ -165,7 +162,7 @@ public final class SdpUtils {
         int objIdx = 0;
         final int objectMaxIdx = objs.length - 1;
         while ((idx = str.indexOf(leftQuote, beginIdx)) != -1) {
-            sb.append(str.substring(beginIdx, idx));
+            sb.append(str, beginIdx, idx);
             int rightQuoteIdx = str.indexOf(rightQuote, idx);
             if (rightQuoteIdx == -1) {
                 beginIdx = str.length();
