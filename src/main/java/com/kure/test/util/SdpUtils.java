@@ -30,6 +30,8 @@ import java.util.stream.Collectors;
 
 /**
  * SDP下的工具类
+ *
+ * @author txh
  * @version 1.0.0
  * @ClassName com.erayt.xfunds.sdp.common/SdpUtils.java
  * @createTime 2019年10月10日 上午11:37:53
@@ -40,6 +42,7 @@ public final class SdpUtils {
 
     /**
      * List中String数据转换成String字符数据
+     *
      * @param strList
      * @param seqStr
      * @return
