@@ -1,0 +1,124 @@
+oracle
+
+----------------ORACLE 权限
+select username,sid,serial# from v$session WHERE username ='TEST'
+
+alter system kill SESSION '202,28403'
+
+create user TEST identified by TEST;
+grant connect,resource to TEST;
+
+GRANT IMP_FULL_DATABASE TO TEST;
+GRANT EXP_FULL_DATABASE TO TEST;
+GRANT CONNECT,RESOURCE TO TEST;
+
+GRANT UNLIMITED TABLESPACE TO TEST;
+GRANT CREATE ANY SYNONYM TO TEST;
+GRANT CREATE ANY TABLE TO TEST;
+GRANT CREATE VIEW TO TEST;
+GRANT SELECT ANY TABLE TO TEST;
+GRANT DELETE ANY TABLE TO TEST;
+GRANT UPDATE ANY TABLE TO TEST;
+GRANT INSERT ANY TABLE TO TEST;
+GRANT ALTER ANY TABLE TO TEST;
+GRANT DROP ANY TABLE TO TEST;
+GRANT EXECUTE ANY PROCEDURE TO TEST;
+GRANT read, write ON DIRECTORY xpadgo_Dri TO TEST;
+
+
+---------插入序列
+insert into table(id,colunm1, column2)
+select table_seq.Nextval,b.*
+from (select colunm1,column2 from table) b;
+
+
+--ORA-01950:对表空间 'xxx' 无权限
+ALTER USER 用户名 QUOTA UNLIMITED ON 表空间;
+
+alter user [username] identified by [newpassword]
+
+
+oracle10g以上
+清空回收站PURGE recyclebin;
+查看回收站 select * from recyclebin;
+purge table origenal_tableName;
+purge index origenal_indexName;
+
+----oracle恢复数据
+select * from [tablename] as of timestamp to_timestamp('2016-09-21 10:29:00','yyyy-mm-dd hh24:mi:ss');
+
+--查询字符集
+select userenv('language') from dual;
+
+----忘记密码
+sqlplus /nolog;
+conn /as sysdba;--已DBA登录
+alter user system identified by password;--修改密码
+alter user system account unlock;--解锁
+
+--------------------oracle 查询死锁
+select username,lockwait,status,machine,program from v$session where sid in (select session_id from v$locked_object)
+
+SELECT t.SID,t.SERIAL# FROM v$session T , v$locked_object s
+where t.SId=s.SESSION_ID;
+--删除死锁
+alter system kill session 'sid,serial#'
+alter system kill session '13,27113';
+
+-- v$session v$locked_object
+select b.username,b.sid,b.serial#,logon_time from v$locked_object a,v$session b where a.session_id = b.sid order by b.logon_time;
+
+alter system kill session '{sid},{sessionid}';
+
+----------------导出 还原
+--按用户导出表
+expdp bdcdj/bdcdj@pana schemas=bdcdj directory=a dumpfile=bdcdj.dmp
+--按表名导出表
+expdp scott/tiger@orcl TABLES=emp,dept dumpfile=expdp.dmp DIRECTORY=dpdata1;
+--按查询条件导出表
+expdp scott/tiger@orcl directory=dpdata1 dumpfile=expdp.dmp Tables=emp query='WHERE deptno=20';
+--按表空间导出表
+expdp system/manager DIRECTORY=dpdata1 DUMPFILE=tablespace.dmp TABLESPACES=temp,example;
+--导整个数据库
+expdp system/manager DIRECTORY=dpdata1 DUMPFILE=full.dmp FULL=y;
+
+--正常备份
+exp bdcdj/bdcdj@pana file=e:\bdcdj.dmp owner=bdcdj
+--正常备份单张表
+exp system/manager@TEST file=d:\daochu.dmp tables=(table1,table2) log=d:\xx.log
+
+----------------------------------------------------------------------------------------------------------------------
+
+oracle还原（imp、impdp）
+
+--导入表
+impdp sde/sde@nbdcj schemas=bdcdj directory=a dumpfile=bdcdj.dmp
+--导入表空间
+impdp system/manager DIRECTORY=dpdata1 DUMPFILE=tablespace.dmp TABLESPACES=example;
+--导入数据库
+impdp system/manager DIRECTORY=dump_dir DUMPFILE=full.dmp FULL=y;
+--追加数据
+impdp system/manager DIRECTORY=dpdata1 DUMPFILE=expdp.dmp SCHEMAS=system TABLE_EXISTS_ACTION
+--改变表的owner
+impdp system/manager DIRECTORY=dpdata1 DUMPFILE=expdp.dmp TABLES=scott.dept REMAP_SCHEMA=scott:system;
+
+--还原单表
+imp sde/sde@pana file=e:\xx.dmp tables=表名
+imp sde/sde@nbbdc file=e:\sde_T_xtsz.dmp tables=T_xtsz
+
+--正常还原
+imp sde/sde@nbbdc file=E:\nb\sde.dmp fromuser=sde touser=sde buffer=99999999 log='E:\nb\sde.log'
+-- 2 将d:\daochu.dmp中的表table1 导入
+imp system/manager@TEST file=d:\daochu.dmp tables=(table1)
+
+buffer=99999999是因为所导入的数据库文件大的情况下的。为了防止数据的丢失。如果在还原时发现少表的情况下。本人建议是将空的模板库在重新还原一下。这样就会全部还原进去。
+
+
+SELECT a.tablespace_name "表空间名",total 表空间大小,free 表空间剩余大小,
+(total-free) 表空间使用大小,
+ROUND((total-free)/total,4)*100 "使用率 %"
+FROM (SELECT tablespace_name,SUM(bytes) free FROM DBA_FREE_SPACE
+GROUP BY tablespace_name ) a,
+(SELECT tablespace_name,SUM(bytes) total FROM DBA_DATA_FILES
+GROUP BY tablespace_name) b
+WHERE a.tablespace_name=b.tablespace_name and a.tablespace_name='XFUNDS_DATA'

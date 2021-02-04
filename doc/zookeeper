@@ -1,0 +1,33 @@
+zookeeper
+Curator包 apache开源基金会
+创建客户端
+
+CuratorFramework client = CuratorFrameworkFactory.builder()
+.connectString("192.168.193.51:2182")
+.sessionTimeoutMs(5000) // 会话超时时间
+.connectionTimeoutMs(5000) // 连接超时时间
+.retryPolicy(new ExponentialBackoffRetry(1000, 5)) //重连策略
+.namespace("base") // 命名控件
+.build();
+client.start();
+client.blockUntilConnected();
+
+创建分布式锁
+InterProcessMutex lock = new InterProcessMutex(client, "/locks/lock"); //节点路径 会自动创建
+// 获得锁
+lock.acquire();
+// do something
+// 释放锁
+lock.release();
+
+选举
+LeaderLatch leaderLatch = new LeaderLatch(client, "/leaders"); //独占
+leaderLatch.start();// 启动选举
+leaderLatch.await();//阻塞 直到获取
+
+// 注册服务
+ServiceInstance<Object> instance = ServiceInstance.builder().address("127.0.0.1").port(8099).name("service").build();
+ServiceDiscovery serviceDiscovery =
+ServiceDiscoveryBuilder.builder(Object.class).client(client).basePath("/test").build();
+serviceDiscovery.registerService(instance);// 注册服务
+serviceDiscovery.start(); //启动服务
