@@ -1,4 +1,4 @@
-package com.kure.test.mail.vo;
+package com.kure.test.springboot.mail.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +18,6 @@ public class MailVo {
     private String error;//报错信息
     @JsonIgnore
     private MultipartFile[] multipartFiles;//邮件附件
-    //省略GET&SET方法
 
 
     public String getId() {

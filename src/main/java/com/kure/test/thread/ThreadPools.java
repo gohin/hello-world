@@ -29,10 +29,9 @@ public class ThreadPools implements Runnable{
 //            threadPoolExecutor.submit(new ThreadPools()); // 有返回值
 
             for(int i = 0; i < 10000; i++) {
-                threadPoolExecutor.submit(new ThreadPools()); // 无返回值
+                threadPoolExecutor.execute(new ThreadPools()); // 无返回值
                 System.out.println(i);
             }
-
 
             int availableProcessors = Runtime.getRuntime().availableProcessors();
             System.out.println(availableProcessors);

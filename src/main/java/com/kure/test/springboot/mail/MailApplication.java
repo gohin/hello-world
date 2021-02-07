@@ -1,10 +1,10 @@
-package com.kure.test.mail;
+package com.kure.test.springboot.mail;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class},scanBasePackages="com.kure.test.mail")
+@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 public class MailApplication {
     public static void main(String[] args) {
         SpringApplication.run(MailApplication.class, args);

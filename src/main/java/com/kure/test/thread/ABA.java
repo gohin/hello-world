@@ -55,9 +55,7 @@ public class ABA {
             boolean c3 = atomicStampedRef.compareAndSet(100, 101, stamp, stamp+1);
             System.out.println(c3);        //false
         });
-
         refT1.start();
         refT2.start();
     }
-
 }

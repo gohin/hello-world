@@ -1,6 +1,6 @@
-package com.kure.test.mail.service;
+package com.kure.test.springboot.mail.service;
 
-import com.kure.test.mail.vo.MailVo;
+import com.kure.test.springboot.mail.vo.MailVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

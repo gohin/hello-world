@@ -1,7 +1,7 @@
-package com.kure.test.mail.controller;
+package com.kure.test.springboot.mail.controller;
 
-import com.kure.test.mail.service.MailService;
-import com.kure.test.mail.vo.MailVo;
+import com.kure.test.springboot.mail.service.MailService;
+import com.kure.test.springboot.mail.vo.MailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +28,7 @@ public class MailController {
      */
     @PostMapping("/mail/send")
     public MailVo sendMail(MailVo mailVo, MultipartFile[] files) {
+        int i = 1/0;
         mailVo.setMultipartFiles(files);
         return mailService.sendMail(mailVo);//发送邮件和附件
     }
