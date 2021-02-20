@@ -7,8 +7,11 @@ import java.util.Map;
 public class MainTest {
 
     public static void main(String[] args) {
-        A a = new B();
-        a.sayHi();
+        int i = 0;
+        System.out.println(i++);
+        System.out.println(i);
+//        A a = new B();
+//        a.sayHi();
     }
 
 }
