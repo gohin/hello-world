@@ -75,7 +75,7 @@ jstat -gcutil [vmid] 5000
 7: ireturn //返回
 
 
-
+javac 中文环境（默认utf-8）需要指定编码格式  javac xx.java -encoding utf-8
 
 
 

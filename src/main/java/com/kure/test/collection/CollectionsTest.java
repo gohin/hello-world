@@ -15,7 +15,11 @@ public class CollectionsTest {
         Collections.reverse(list);
         list.stream().forEach(System.out::println);
 
-        System.out.println(Collections.binarySearch(list, "a"));
+
+        // 二分法查找 升序查找
+        list = Arrays.asList("aaa","bbb","ccc").stream().collect(Collectors.toList());
+
+        System.out.println(Collections.binarySearch(list, "aaa"));
         list.stream().forEach(System.out::println);
     }
 }
