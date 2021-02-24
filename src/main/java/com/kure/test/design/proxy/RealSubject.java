@@ -8,7 +8,11 @@ public class RealSubject implements Subject {
     }
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
-        Subject hello = (Subject) new JdkProxy(RealSubject.class.newInstance()).createJdkProxy();
-        hello.sayHi();
+
+        Subject hello1 = (Subject) new MybatisJdkProxy(RealSubject.class.newInstance(), RealSubject.class).createJdkProxy();
+        hello1.sayHi();
+
+//        Subject hello = (Subject) new JdkProxy(RealSubject.class.newInstance()).createJdkProxy();
+//        hello.sayHi();
     }
 }
