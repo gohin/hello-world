@@ -19,7 +19,7 @@ public class MybatisJdkProxy implements InvocationHandler {
         try{
             System.out.println("before proxy");
             System.out.println(clazz.getCanonicalName());
-            return method.invoke(target, args);
+            return method.invoke(this, args);
         }catch (Exception e) {
 
         }finally {
