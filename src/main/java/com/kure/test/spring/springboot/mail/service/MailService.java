@@ -1,5 +1,6 @@
 package com.kure.test.spring.springboot.mail.service;
 
+import com.kure.test.spring.springboot.mail.dao.MailDao;
 import com.kure.test.spring.springboot.mail.vo.MailVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,9 @@ public class MailService {
 
     @Autowired
     private JavaMailSenderImpl mailSender;//注入邮件工具类
+
+    @Autowired
+    private MailDao mailDao;
 
     /**
      * 发送邮件
@@ -83,8 +87,9 @@ public class MailService {
     }
 
     //保存邮件
-    private MailVo saveMail(MailVo mailVo) {
+    public MailVo saveMail(MailVo mailVo) {
         //将邮件保存到数据库..
+        mailDao.findMailInfo();
         return mailVo;
     }
 
