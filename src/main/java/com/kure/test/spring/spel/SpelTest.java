@@ -21,12 +21,15 @@ public class SpelTest {
         context.setVariable("inventor", new Inventor("kure", new Date(), "626"));
         ExpressionParser parser = new SpelExpressionParser();
 
+        // 获取bean
         System.out.println(parser.parseExpression("@inventor1.name").getValue(context));
 
         System.out.println(parser.parseExpression("5 == 4").getValue());
         System.out.println(parser.parseExpression("5 eq 5").getValue());
+        // 获取变量
         System.out.println(parser.parseExpression("#inventor.birthdate").getValue(context, Date.class));
 
+        // 静态方法
         Integer pupin = parser.parseExpression("#getInt() * 5").getValue(
                 context, Integer.class);
         System.out.println(pupin);
