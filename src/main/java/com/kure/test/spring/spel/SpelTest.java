@@ -1,5 +1,7 @@
 package com.kure.test.spring.spel;
 
+import org.apache.ibatis.mapping.Environment;
+import org.apache.ibatis.session.Configuration;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.expression.BeanFactoryResolver;
 import org.springframework.expression.ExpressionParser;

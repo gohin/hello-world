@@ -1,5 +1,6 @@
 package com.kure.test.spring.springboot;
 
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -21,7 +22,9 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 public class Starter {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(Starter.class, args);
+        SpringApplication springApplication = new SpringApplication();
+        springApplication.setBannerMode(Banner.Mode.OFF);
+        ConfigurableApplicationContext context = springApplication.run(Starter.class, args);
         StandardEvaluationContext ctx = new StandardEvaluationContext();
         ctx.setBeanResolver(new BeanFactoryResolver(context));
         ctx.addPropertyAccessor(new MapAccessor());
