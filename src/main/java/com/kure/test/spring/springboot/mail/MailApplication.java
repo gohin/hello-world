@@ -1,4 +1,4 @@
-package com.kure.test.springboot.mail;
+package com.kure.test.spring.springboot.mail;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

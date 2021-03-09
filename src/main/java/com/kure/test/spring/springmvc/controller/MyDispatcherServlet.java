@@ -1,9 +1,9 @@
-package com.kure.test.springmvc.controller;
+package com.kure.test.spring.springmvc.controller;
 
-import com.kure.test.springmvc.anno.MyAutowired;
-import com.kure.test.springmvc.anno.MyController;
-import com.kure.test.springmvc.anno.MyRequestMapping;
-import com.kure.test.springmvc.anno.MyService;
+import com.kure.test.spring.springmvc.anno.MyAutowired;
+import com.kure.test.spring.springmvc.anno.MyController;
+import com.kure.test.spring.springmvc.anno.MyRequestMapping;
+import com.kure.test.spring.springmvc.anno.MyService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

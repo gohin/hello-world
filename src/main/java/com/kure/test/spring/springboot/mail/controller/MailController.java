@@ -1,7 +1,7 @@
-package com.kure.test.springboot.mail.controller;
+package com.kure.test.spring.springboot.mail.controller;
 
-import com.kure.test.springboot.mail.service.MailService;
-import com.kure.test.springboot.mail.vo.MailVo;
+import com.kure.test.spring.springboot.mail.service.MailService;
+import com.kure.test.spring.springboot.mail.vo.MailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

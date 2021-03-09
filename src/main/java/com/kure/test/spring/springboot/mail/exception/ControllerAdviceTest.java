@@ -1,4 +1,4 @@
-package com.kure.test.springboot.mail.exception;
+package com.kure.test.spring.springboot.mail.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

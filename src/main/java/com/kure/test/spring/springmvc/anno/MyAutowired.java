@@ -1,4 +1,4 @@
-package com.kure.test.springmvc.anno;
+package com.kure.test.spring.springmvc.anno;
 
 
 import java.lang.annotation.*;

@@ -1,4 +1,4 @@
-package com.kure.test.springboot.mail.vo;
+package com.kure.test.spring.springboot.mail.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;

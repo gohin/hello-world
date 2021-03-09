@@ -1,10 +1,10 @@
-package com.kure.test.springmvc.anno;
+package com.kure.test.spring.springmvc.anno;
 
 import java.lang.annotation.*;
 
 @Target(ElementType.ANNOTATION_TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface MyRequestMapping {
+public @interface MyController {
     String value() default "";
 }
