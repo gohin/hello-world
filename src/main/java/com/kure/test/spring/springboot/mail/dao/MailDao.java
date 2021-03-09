@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MailDao {
-    void findMailInfo();
+    int findMailInfo();
 }

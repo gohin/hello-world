@@ -97,4 +97,8 @@ public class MailService {
     public String getMailSendFrom() {
         return mailSender.getJavaMailProperties().getProperty("from");
     }
+
+    public int findMailInfo(){
+        return mailDao.findMailInfo();
+    }
 }

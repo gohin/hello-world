@@ -9,8 +9,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+
+import static junit.framework.TestCase.assertEquals;
 
 /** 
 * MyBatisTest Tester. 
@@ -43,7 +46,14 @@ public void after() throws Exception {
 */ 
 @Test
 public void testMain() throws Exception {
-    mailService.saveMail(new MailVo());
+
+    MailVo mailVo = new MailVo();
+    assertEquals(mailVo, mailService.saveMail(mailVo));
+
+    PowerMockito.when(mailDao.findMailInfo()).thenReturn(10);
+
+    int total = mailService.findMailInfo();
+    assertEquals(10, total);
 }
 
 
