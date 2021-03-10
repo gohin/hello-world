@@ -4,8 +4,6 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.framework.ProxyFactory;
 
-import java.lang.reflect.Method;
-
 public class ProxyFactoryTest implements MethodInterceptor{
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
@@ -15,6 +13,7 @@ public class ProxyFactoryTest implements MethodInterceptor{
         proxyFactory.setTarget(ProxyTest.class.newInstance());
         SubjectTest subjectTest = (SubjectTest) proxyFactory.getProxy();
         subjectTest.sayHi();
+        subjectTest.sayHello();
     }
 
     @Override
@@ -29,5 +28,10 @@ class ProxyTest implements SubjectTest{
     @Override
     public void sayHi() {
         System.out.println("1111111");
+    }
+
+    @Override
+    public void sayHello() {
+        System.out.println("sayHello");
     }
 }

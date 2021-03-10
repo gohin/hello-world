@@ -1,5 +1,6 @@
 package com.kure.test.collection;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -21,5 +22,8 @@ public class CollectionsTest {
 
         System.out.println(Collections.binarySearch(list, "aaa"));
         list.stream().forEach(System.out::println);
+
+        List list1 = Collections.unmodifiableList(new ArrayList<>());
+        list1.add(11); // error UnsupportedOperationException
     }
 }

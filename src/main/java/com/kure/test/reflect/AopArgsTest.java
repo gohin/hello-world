@@ -7,7 +7,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.NotNull;
 import java.lang.annotation.Annotation;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -30,10 +29,10 @@ public class AopArgsTest {
         Stream.iterate(0, i-> i + 1).limit(objects.length).forEach(integer -> {
             Stream.of(annotationss).forEach(annotations -> {
                 Stream.of(annotations).forEach(annotation -> {
-                    if (annotation instanceof NotNull) {
-                        NotNull notNull = (NotNull) annotation;
-                        objects[integer] = Optional.ofNullable(objects[integer]);
-                    }
+//                    if (annotation instanceof NotNull) {
+//                        NotNull notNull = (NotNull) annotation;
+//                        objects[integer] = Optional.ofNullable(objects[integer]);
+//                    }
                 });
             });
         });
