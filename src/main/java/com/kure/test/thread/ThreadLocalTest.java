@@ -16,6 +16,7 @@ public class ThreadLocalTest {
         Map<String, String> map = new HashMap<>(8);
         map.put("name","kure");
         threadLocalMap.set(map);
+        threadLocalMap.get();
         Field field1 =  t1.getClass().getDeclaredField("threadLocals");
         field1.setAccessible(true);
         Object obj = field1.get(t1);

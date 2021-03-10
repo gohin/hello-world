@@ -12,6 +12,15 @@ public class MainTest {
         j++;
         System.out.println(i++);
         System.out.println(i);
+//        A a = new B();
+//        a.sayHi();
+        {
+            int a = 0;
+        }
+
+        {
+            int a = 0;
+        }
     }
 
 }
