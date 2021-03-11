@@ -25,7 +25,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 三级缓存 DefaultSingletonBeanRegistry
  * singletonFactories
  * earlySingletonObjects
- * singletonFactories  getbeanEarlyReference
+ * singletonFactories  getBeanEarlyReference
  *
  * 只使用一级缓存行不行？ 不行，可能取到半成品
  * 只使用二级缓存行不行 ？ 行，可以解决循环依赖问题

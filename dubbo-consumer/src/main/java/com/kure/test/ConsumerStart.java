@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 @EnableDubbo
-public class ProviderStart {
+public class ConsumerStart {
     public static void main(String[] args) {
-        SpringApplication.run(ProviderStart.class, args);
+        SpringApplication.run(ConsumerStart.class, args);
     }
 }
