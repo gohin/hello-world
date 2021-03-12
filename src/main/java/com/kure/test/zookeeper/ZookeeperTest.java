@@ -34,7 +34,7 @@ public class ZookeeperTest {
          * 创建一个命名空间按为base的客户端
          */
         CuratorFramework client = CuratorFrameworkFactory.builder()
-                .connectString("192.168.193.51:2182")
+                .connectString("127.0.0.1:2181")
                 .sessionTimeoutMs(5000)  // 会话超时时间
                 .connectionTimeoutMs(5000) // 连接超时时间
                 .retryPolicy(new ExponentialBackoffRetry(1000, 5))
@@ -87,60 +87,3 @@ public class ZookeeperTest {
         context.close();
     }
 }
-
-
-//public class ProxyHandler implements InvocationHandler{
-//    private Object object;
-//    public ProxyHandler(Object object){
-//        this.object = object;
-//    }
-//    @Override
-//    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-//        System.out.println("Before invoke "  + method.getName());
-//        method.invoke(object, args);
-//        System.out.println("After invoke " + method.getName());
-//        return null;
-//    }
-//}
-
-//    public static void main(String[] args) {
-//        HelloInterface hello = new Hello();
-//
-//        InvocationHandler handler = new ProxyHandler(hello);
-//
-//        HelloInterface proxyHello = (HelloInterface) Proxy.newProxyInstance(hello.getClass().getClassLoader(), hello.getClass().getInterfaces(), handler);
-//
-//        proxyHello.sayHello();
-//    }
-
-
-
-//实现InvocationHandler接口,实现invoke方法
-//public class HuGeProxy2 implements InvocationHandler{
-//
-//    private Star hg = new HuGe();
-//
-//    public Star getProcxy(){
-//        return (Star)Proxy.newProxyInstance(
-//                getClass().getClassLoader(),
-//                hg.getClass().getInterfaces(),
-//                this);
-//    }
-//
-//    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-//
-//        if(method.getName().equals("sing")){
-//            System.out.println("我是胡歌代理2，找胡歌唱歌找我");
-//            return method.invoke(hg, args);
-//        }
-//        if(method.getName().equals("act")){
-//            System.out.println("我是胡歌代理2，找胡歌演电视剧找我");
-//            return method.invoke(hg, args);
-//        }
-//
-//        return null;
-//    }
-//
-//
-//
-//}
