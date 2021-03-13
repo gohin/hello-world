@@ -14,7 +14,7 @@ public class RegisterZk {
     public static void main(String[] args) throws Exception {
         // 创建客户端
         CuratorFramework client = CuratorFrameworkFactory.builder()
-                .connectString("127.0.0.1:2181")
+                .connectString("192.168.2.129:2181")
                 .sessionTimeoutMs(5000) // 会话超时时间
                 .connectionTimeoutMs(5000) // 连接超时时间
                 .retryPolicy(new ExponentialBackoffRetry(1000, 5)) //重连策略

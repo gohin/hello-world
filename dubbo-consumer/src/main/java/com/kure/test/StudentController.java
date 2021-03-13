@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class StudentController {
     // 调用暴露的接口
-    @Reference(interfaceClass = StudentService.class, version = "1.0.0", check = false)
+    @Reference(interfaceClass = StudentService.class, check = false)
     private StudentService studentService;
 
     @GetMapping(value = "/student/count")
