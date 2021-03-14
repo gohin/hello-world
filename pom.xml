@@ -12,6 +12,7 @@
         <module>dubbo-consumer</module>
         <module>dubbo-interface</module>
         <module>spring-es</module>
+        <module>spring-mq</module>
     </modules>
 
     <packaging>pom</packaging>
