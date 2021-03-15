@@ -13,6 +13,7 @@
         <module>dubbo-interface</module>
         <module>spring-es</module>
         <module>spring-mq</module>
+        <module>kure-spring-boot-starter</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -257,6 +258,11 @@
             <version>0.2.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.kure.test</groupId>
+            <artifactId>kure-spring-boot-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
     </dependencies>
 

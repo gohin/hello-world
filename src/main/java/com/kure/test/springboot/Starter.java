@@ -39,6 +39,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Starter {
 
+    /**
+     * 使用注解import的方式导入自定义starter
+     * 或者使用 spring.factory的形式
+     * org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.kure.test.RedisAutoConfiguration
+     *
+     * @Import = xml import
+     * @param args
+     */
     public static void main(String[] args) {
         SpringApplication.run(Starter.class, args);
     }
