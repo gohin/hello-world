@@ -18,4 +18,11 @@ public class MockServiceImpl implements MockService{
         Assert.notNull(mockDomain, "mock is null");
         return mockDomain;
     }
+
+    @Override
+    public MockDomain testMockParam(String s1, String s2, String s3, String s4) {
+        MockDomain mockDomain = mockDao.findMock();
+        Assert.notNull(mockDomain, "mock is null");
+        return mockDomain;
+    }
 }
