@@ -1,8 +1,8 @@
 package com.kure.test.design.factory.abstract1;
 
-import com.kure.test.design.factory.Circle;
-import com.kure.test.design.factory.Shape;
-import com.kure.test.design.factory.Square;
+import com.kure.test.design.factory.base.Circle;
+import com.kure.test.design.factory.base.Shape;
+import com.kure.test.design.factory.base.Square;
 
 /**
  * @author Lenovo

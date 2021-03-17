@@ -1,6 +1,6 @@
 package com.kure.test.design.factory.simple;
 
-import com.kure.test.design.factory.Shape;
+import com.kure.test.design.factory.base.Shape;
 
 /**
  * 工厂模式（Factory Pattern）是 Java 中最常用的设计模式之一。

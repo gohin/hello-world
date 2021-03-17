@@ -3,6 +3,10 @@ package com.kure.test.design.factory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 形容词用接口
+ * 名词用抽象类
+ */
 public class PCFactoryTest {
     public static void main(String[] args) {
         List<Product> products = new ArrayList<>();

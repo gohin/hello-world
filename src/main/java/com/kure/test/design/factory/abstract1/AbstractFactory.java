@@ -1,6 +1,6 @@
 package com.kure.test.design.factory.abstract1;
 
-import com.kure.test.design.factory.Shape;
+import com.kure.test.design.factory.base.Shape;
 
 /**
  * 抽象工厂模式（Abstract Factory Pattern）是围绕一个超级工厂创建其他工厂。

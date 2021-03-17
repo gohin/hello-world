@@ -1,4 +1,4 @@
-package com.kure.test.design.factory;
+package com.kure.test.design.factory.base;
 
 public class Square implements Shape {
     @Override
