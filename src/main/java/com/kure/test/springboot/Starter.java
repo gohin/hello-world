@@ -15,9 +15,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 加载配置文件->解析->封装beanDefintion对象->实例化->完整对象->使用
  *
  * 通过抽象类提供的抽象方法，从配置文件 注解等来获取beanDefintion
- * 后置处理 beanFactoryProcessor 来装配变量属性
+ * 后置处理 beanFactoryPostProcessor 来装配变量属性
  *
- * ConfigurationClassPrase 来解析注解
+ * ConfigurationClassParse 来解析注解
  *
  * bean创建过程
  * getBean doGetBean createBean createBeanInstance
