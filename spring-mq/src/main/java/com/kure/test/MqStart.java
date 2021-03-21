@@ -39,6 +39,9 @@ import org.springframework.boot.SpringBootConfiguration;
  *   > cd distribution/target/rocketmq-4.8.0/rocketmq-4.8.0
  *
  *   nohup sh bin/mqnamesrv & --- '&'守护进程
+ *
+ *   sh bin/mqbroker -m 查看配置
+ *   autoCreateTopicEnable=true 自动创建topic
  */
 @SpringBootConfiguration
 public class MqStart {

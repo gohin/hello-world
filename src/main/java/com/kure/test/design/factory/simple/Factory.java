@@ -23,18 +23,18 @@ public class Factory {
     }
 
 
-//    public static Shape getShape(String type) {
-//        Shape shape = null;
-//        switch (type) {
-//            case "circle":
-//                shape = new Circle();
-//                break;
-//            case "square":
-//                shape = new Square();
-//                break;
-//            default:
-//                shape = null;
-//        }
-//        return shape;
-//    }
+    public static Shape getShape(String type) {
+        Shape shape = null;
+        switch (type) {
+            case "circle":
+                shape = new Circle();
+                break;
+            case "square":
+                shape = new Square();
+                break;
+            default:
+                shape = null;
+        }
+        return shape;
+    }
 }
