@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kure.test.spring.mybatis.dao.BookMapper">
+
+    <insert id="insertBook" parameterType="com.kure.test.spring.mybatis.domain.Book">
+        insert into book (bookName) values
+        (#{bookName,jdbcType=VARCHAR})
+    </insert>
+
+</mapper>
