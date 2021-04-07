@@ -25,7 +25,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 三级缓存 DefaultSingletonBeanRegistry
  * singletonFactories
  * earlySingletonObjects
- * singletonFactories  getBeanEarlyReference
+ * singletonFactories  org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator#getEarlyBeanReference(java.lang.Object, java.lang.String)
  *
  * 只使用一级缓存行不行？ 不行，可能取到半成品
  * 只使用二级缓存行不行 ？ 行，可以解决循环依赖问题
@@ -39,6 +39,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 事务控制
  * org.springframework.transaction.interceptor.TransactionAspectSupport
  * #invokeWithinTransaction(java.lang.reflect.Method, java.lang.Class, org.springframework.transaction.interceptor.TransactionAspectSupport.InvocationCallback)
+ *
+ * mvc注解解析
+ * org.springframework.web.servlet.handler.AbstractHandlerMethodMapping#afterPropertiesSet()
+ * org.springframework.web.servlet.handler.AbstractHandlerMethodMapping#detectHandlerMethods(java.lang.Object)
  */
 @SpringBootApplication
 public class Starter {
