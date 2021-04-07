@@ -9,7 +9,7 @@ import java.util.Map;
 public class MainTest {
 
 
-    public static void main(String[] args) throws IOException {
+    public  static void main(String[] args) throws IOException {
         OutputStream out = System.out;
 
         System.out.println();

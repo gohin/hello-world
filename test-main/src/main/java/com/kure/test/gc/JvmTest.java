@@ -8,7 +8,7 @@ import org.openjdk.jol.info.ClassLayout;
  * 实例
  * 对齐padding
  * 无锁  unused:25 | identity_hashcode:31 | unused:1 | age:4 | biased_lock:1 | lock:2
- * 偏向  thread：54             | epoch：2 | unused:1 | age:4 | biased_lock:1 | lock:2
+ * 偏向  thread ：54             | epoch：2 | unused:1 | age:4 | biased_lock:1 | lock:2
  * 轻量 ptr_to_lock_record:62												  | lock:2
  * 重量 ptr_to_heavyweight_moniter:62										  | lock:2
  * GC  空																	  | lock:2

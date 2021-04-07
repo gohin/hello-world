@@ -4,13 +4,28 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
+/**
+ * unsafe java.compareAndSwapInt native - unsafe.cpp
+ * Atomic::cmpxhg -asm:cmpxchg -cpu的汇编指令
+ * cas操作cpu本身有指令支持 cmpxchg 不保证原子性
+ * LOCK_IF_MF cmpxchg === lock_cmpxchg 多核时 加锁
+ *
+ * cas效率是否一定比悲观锁效率高
+ * 什么时候用cas(线程持续时间短使用) 什么时候用悲观锁
+ * 优先使用synchronized解决问题的优先使用 队列不消耗cpu
+ * cas 自旋 浪费cpu
+ *
+ * jdk1.5之后 synchronized内部有锁升级的过程
+ * 偏向锁（可重入锁）-自旋锁（轻量级锁 cas 无锁）-重量级锁
+ *
+ */
 public class ABA {
 
     private static AtomicInteger atomicInt = new AtomicInteger(100);
     private static AtomicStampedReference<Integer> atomicStampedRef =
             new AtomicStampedReference<Integer>(100, 0);
 
-    public static void main(String[] args) throws InterruptedException {
+    public synchronized static void main(String[] args) throws InterruptedException {
         Thread intT1 = new Thread(() -> {
             atomicInt.compareAndSet(100, 101);
             atomicInt.compareAndSet(101, 100);
