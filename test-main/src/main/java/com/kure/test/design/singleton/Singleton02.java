@@ -5,9 +5,11 @@ package com.kure.test.design.singleton;
  * 1.私有构造函数，防止别人实例化
  * 2.静态属性，指向一个实例化对象
  * 3.公共方法，以便别人获取到实例化对象属性
+ *
+ * volatile 禁止指令重排序
  */
 public class Singleton02 {
-    private static Singleton02 SINGLETON = null;
+    private static volatile Singleton02 SINGLETON = null;
     private Singleton02(){}
 
     /**

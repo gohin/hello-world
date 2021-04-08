@@ -8,21 +8,16 @@ import java.util.Map;
 
 public class MainTest {
 
+    int a = 3;
+    public MainTest(){
+        System.out.println("aaa"+a);
+    }
 
-    public  static void main(String[] args) throws IOException {
-        OutputStream out = System.out;
-
-        System.out.println();
-        try {
-            out.write("hello".getBytes());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    {
+        System.out.println("ddd"+a);
+    }
+    public  static void main(String[] args) throws IOException, ClassNotFoundException {
+        Class clazz = Class.forName("com.kure.test.MainTest");
     }
 }
 
