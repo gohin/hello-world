@@ -12,9 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * spring 容器描述
  *
- * 加载配置文件->解析->封装beanDefintion对象->实例化->完整对象->使用
+ * 加载配置文件->解析->封装beanDefinition对象->实例化->完整对象->使用
  *
- * 通过抽象类提供的抽象方法，从配置文件 注解等来获取beanDefintion
+ * 通过抽象类提供的抽象方法，从配置文件 注解等来获取beanDefinition
  * 后置处理 beanFactoryPostProcessor 来装配变量属性
  *
  * ConfigurationClassParse 来解析注解
