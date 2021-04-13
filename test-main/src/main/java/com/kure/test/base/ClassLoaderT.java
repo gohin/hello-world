@@ -6,7 +6,7 @@ package com.kure.test.base;
  * initializing 静态变量赋值初始值
  * gc
  */
-public class ClassLoader {
+public class ClassLoaderT {
 
     public static void main(String[] args) {
         System.out.println(T.count);

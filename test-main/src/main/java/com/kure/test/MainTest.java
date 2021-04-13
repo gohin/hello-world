@@ -1,24 +1,25 @@
 package com.kure.test;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class MainTest {
 
-    int a = 3;
-    public MainTest(){
-        System.out.println("aaa"+a);
+    private static int a  = 3;
+
+    public MainTest() {
+        System.out.println("11111");
+    }
+
+    static {
+        System.out.println("static {}");
     }
 
     {
-        System.out.println("ddd"+a);
+        System.out.println("{}");
     }
-    public  static void main(String[] args) throws IOException, ClassNotFoundException {
-        Class clazz = Class.forName("com.kure.test.MainTest");
+
+    public static void main(String[] args) {
+        System.out.println(MainTest.a);
     }
+
 }
 
 
