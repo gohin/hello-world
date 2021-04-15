@@ -2,6 +2,8 @@ package com.kure.test.gc;
 
 import org.openjdk.jol.info.ClassLayout;
 
+import java.io.IOException;
+
 /**
  * jol 查看对象内存结构 %8 = 0 长度需要被8整除
  * 对象头 markword (gc info + hashcode + lock info) + klass pointer
@@ -22,7 +24,7 @@ import org.openjdk.jol.info.ClassLayout;
  */
 public class JvmTest {
     static String s;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         JvmTest o = new JvmTest();
         /**
          *  OFFSET  SIZE   TYPE DESCRIPTION                               VALUE
@@ -61,5 +63,6 @@ public class JvmTest {
          */
         o.hashCode();
         System.out.println(ClassLayout.parseInstance(o).toPrintable());
+        System.in.read();
     }
 }
