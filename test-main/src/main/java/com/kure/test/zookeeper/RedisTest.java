@@ -10,6 +10,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.UUID;
 
+/**
+ * 布隆过滤器
+ * bitmap 二进制map
+ *
+ * 缓存穿透
+ *
+ * 缓存和数据库都不存在
+ * 布隆过滤器： 通过一定的错误率，来降低内存的占用
+ * 布隆算法的原理：
+ *
+ * 缓存击穿
+ *
+ * 缓存没有 数据库有 同一时间高并发
+ * 热点数据永不过期
+ * 加随机过期时间
+ *
+ * 缓存雪崩
+ *
+ * 跳跃链表
+ *
+ * 
+ */
 public class RedisTest {
 
     private final static String lock = "lock";
