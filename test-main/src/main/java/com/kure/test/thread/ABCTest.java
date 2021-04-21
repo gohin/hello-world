@@ -5,10 +5,14 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ABCTest {
 
-    private static int state = 0;
+    private static int state = 0; // 类变量 线程不安全
     private static Lock lock = new ReentrantLock();
 
+    private String name; // 成员变量 线程不安全
+
+
     public static void main(String[] args) {
+        // args a  局部变量 线程安全
         Thread a = new Thread(()->{
                 for(int i = 0; i < 10;) {
                     lock.lock();
