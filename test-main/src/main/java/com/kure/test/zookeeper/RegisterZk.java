@@ -22,6 +22,7 @@ public class RegisterZk {
                 .build();
         client.start();
         client.blockUntilConnected();
+
         // 注册服务
         ServiceInstance<Object> instance = ServiceInstance.builder().address("127.0.0.1").port(8099).name("service").build();
         ServiceDiscovery serviceDiscovery =

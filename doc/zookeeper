@@ -2,6 +2,13 @@ zookeeper
 Curator包 apache开源基金会
 创建客户端
 
+可以创建四种目录
+1.持久目录 create /temp 持有目录
+2.临时目录 create -e /temp 临时目录
+3.持久有序目录 create -s /temp 有序
+4.持久临时目录 create -s -a /temp 临时有序
+
+
 CuratorFramework client = CuratorFrameworkFactory.builder()
 .connectString("192.168.193.51:2182")
 .sessionTimeoutMs(5000) // 会话超时时间

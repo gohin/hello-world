@@ -19,6 +19,10 @@ package com.kure.test.gc;
  * 查看jdk默认的垃圾收集器 java -XX:+PrintCommandLineFlags -version
  * jdk8 默认 Parallel Scavenge + Parallel Old
  *
+ * 标记清除 垃圾碎片 空间浪费
+ * 拷贝 eden 效率高 young gc
+ * 标记压缩 空间利率高 效率不高 移动对象 old gc
+ *
  */
 public class FinalizeEscapeGc {
 
