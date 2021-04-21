@@ -43,9 +43,30 @@ explain select * from employees where age=30 and position ='dev'; -- 没有索�
 
 explain select * from employees where  position= 'manager'; -- 没走索引
 
+锁：
 
+悲观锁（排他锁）
+乐观锁（自旋锁 version字段）
 
+锁的粒度
+行锁 间隙锁 临键锁
+表锁 意向锁 自增锁 记录锁
 
+锁的方式 排他（写锁） 共享（读锁）
+
+查看锁
+show engine innodb status\G
+set global_innodb_status_output_locks=1;
+
+mysql调优
+查看执行计划
+索引的使用
+sql语句的调优
+性能监控
+参数调整
+
+查看索引
+show index from [table];
 
 ## SQL命令
 
