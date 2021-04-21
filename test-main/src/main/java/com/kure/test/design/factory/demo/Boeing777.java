@@ -1,8 +1,8 @@
 package com.kure.test.design.factory.demo;
 
-public class Boeing747 extends Plane {
+public class Boeing777 extends Plane {
     @Override
     public void fly() {
-        System.out.println("boeing747 fly");
+        System.out.println("boeing777 fly");
     }
 }

@@ -2,15 +2,26 @@ package com.kure.test.design.factory.demo;
 
 public class AbstractFactoryTest {
     public static void main(String[] args) {
-        AbstractFactory factory = new FoxFactory();
+        AbstractFactory bydFactory = new BydFactory();
 
-        Car bmw = factory.createCar();
-        bmw.move();
+        Car byd = bydFactory.createCar();
+        byd.drive();
 
-        Plane boeing = factory.createPlane();
-        boeing.fly();
+        Plane boeing777 = bydFactory.createPlane();
+        boeing777.fly();
 
-        Ship boat = factory.createShip();
-        boat.go();
+        Ship bydBoat = bydFactory.createShip();
+        bydBoat.go();
+
+        AbstractFactory teslaFactory = new TeslaFactory();
+
+        Car tesla = teslaFactory.createCar();
+        tesla.drive();
+
+        Plane boeing747 = teslaFactory.createPlane();
+        boeing747.fly();
+
+        Ship teslaBoat = teslaFactory.createShip();
+        teslaBoat.go();
     }
 }

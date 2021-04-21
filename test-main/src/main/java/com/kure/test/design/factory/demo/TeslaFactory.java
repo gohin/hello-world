@@ -1,6 +1,6 @@
 package com.kure.test.design.factory.demo;
 
-public class FoxFactory extends AbstractFactory{
+public class TeslaFactory extends AbstractFactory{
     @Override
     public Car createCar() {
         return new Tesla();
@@ -8,7 +8,7 @@ public class FoxFactory extends AbstractFactory{
 
     @Override
     public Ship createShip() {
-        return new Boat();
+        return new TeslaBoat();
     }
 
     @Override
