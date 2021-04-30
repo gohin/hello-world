@@ -6,5 +6,9 @@ public class IFactoryTest {
         IFactory carFactory = new BenzFactory();
         Car benz = carFactory.createCar();
         benz.drive();
+
+        IFactory teslaFactory = new TeslaFactory();
+        Car tesla = teslaFactory.createCar();
+        tesla.drive();
     }
 }

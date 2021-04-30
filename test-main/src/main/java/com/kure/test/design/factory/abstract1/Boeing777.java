@@ -1,4 +1,4 @@
-package com.kure.test.design.factory.demo;
+package com.kure.test.design.factory.abstract1;
 
 public class Boeing777 extends Plane {
     @Override
