@@ -1,7 +1,5 @@
 package com.kure.test.design.facade;
 
-import com.kure.test.design.facade.serivce.ShapeFacade;
-
 /**
  * 外观模式（Facade Pattern）隐藏系统的复杂性，
  * 并向客户端提供了一个客户端可以访问系统的接口。这种类型的设计模式属于结构型模式，它向现有的系统添加一个接口，来隐藏系统的复杂性。
@@ -16,12 +14,65 @@ import com.kure.test.design.facade.serivce.ShapeFacade;
  *
  * 注意事项：在层次化结构中，可以使用外观模式定义系统中每一层的入口。
  *
- * xfunds 应用 HolidayRepositoryFacadeImpl 例子
  */
 public class FacadePattern {
 
     public static void main(String[] args) {
-        ShapeFacade shapeFacade = new ShapeFacade();
-        shapeFacade.getCircle();
+        new Facade().doSomething();
     }
 }
+
+class Client1{
+
+    public static void main(String[] args) {
+        new Client1().doSomething();
+    }
+    public void doSomething() {
+        new SubSystem1().method1();
+        new SubSystem2().method2();
+        new SubSystem3().method3();
+    }
+}
+
+class Client2{
+
+    public static void main(String[] args) {
+        new Client2().doSomething();
+    }
+
+    public void doSomething() {
+        new SubSystem1().method1();
+        new SubSystem2().method2();
+        new SubSystem3().method3();
+    }
+}
+
+class Facade{
+
+    public void doSomething(){
+        new SubSystem1().method1();
+        new SubSystem2().method2();
+        new SubSystem3().method3();
+    }
+}
+
+class SubSystem1 {
+    public void method1() {
+        System.out.println("SubSystem1.method1 executed");
+    }
+}
+
+
+class SubSystem2 {
+    public void method2() {
+        System.out.println("SubSystem2.method2 executed");
+    }
+}
+
+
+class SubSystem3 {
+    public void method3() {
+        System.out.println("SubSystem3.method3 executed");
+    }
+}
+
